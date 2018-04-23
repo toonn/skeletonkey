@@ -1,0 +1,3 @@
+[submodule "MasterPassword"]
+	path = MasterPassword
+	url = github:Lyndir/MasterPassword
