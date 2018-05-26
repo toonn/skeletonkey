@@ -24,7 +24,7 @@ executable skeletonkey
   hs-source-dirs:      src
   default-language:    Haskell2010
 
-library
+library masterpassword
   exposed-modules:     MPAlgorithm
   other-modules:       Types
   build-depends:       base >=4.10 && <4.11
@@ -32,5 +32,21 @@ library
                      , blake2
                      , argon2
                      , cryptonite
+                     , vector
+                     , text
+                     , utf8-string
+                     , containers
+                     , memory
+                     , cpu
   hs-source-dirs:      lib
   default-language:    Haskell2010
+
+test-suite mpw
+  default-language:    Haskell2010
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      tests
+  main-is:             Main.hs
+  build-depends:       base >=4.10 && <4.11
+                     , tasty >=0.7
+                     , tasty-hunit
+                     , masterpassword
