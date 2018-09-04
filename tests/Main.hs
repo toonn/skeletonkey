@@ -1,10 +1,13 @@
 module Main where
 
 import Test.Tasty
+import Test.Tasty.Ingredients.FailFast
 
 import qualified MPW.Test as MPW
 
-main = defaultMain tests
+main = tests >>= defaultMainWithIngredients (map failFast defaultIngredients)
 
-tests :: TestTree
-tests = testGroup "Tests" [ MPW.tests ]
+tests :: IO TestTree
+tests = do
+  mpwTs <- MPW.tests
+  return $ testGroup "Tests" [ mpwTs ]

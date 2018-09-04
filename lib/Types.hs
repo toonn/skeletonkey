@@ -33,7 +33,7 @@ newtype UserSeed       = USeed { unUS :: Vector Word8 }
 newtype MasterKey      = MKey  { unMK :: Vector Word8 }
 newtype SiteSeed       = SSeed { unSS :: Vector Word8 }
 newtype TemplateSeed   = TSeed { unTS :: Vector Word8 }
-newtype SitePassword   = SPass { unSP :: Vector Word8 }
+newtype SitePassword   = SPass { unSP :: Vector Word8 } deriving (Eq, Show)
 
 t2BS :: Text -> B.ByteString
 t2BS = encodeUtf8

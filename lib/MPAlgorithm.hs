@@ -1,6 +1,7 @@
 module MPAlgorithm
   ( masterKey
   , sitePassword
+  , bigEndian
   ) where
 
 import Types
@@ -26,7 +27,7 @@ masterKey mp (UName un) = mpwKDF mp us
           U.++ bigEndian (U.length un) U.++ un
 
 bigEndian :: Int -> U.Vector Word8
-bigEndian w = fromList [ w32Byte w i | i <- [24,16..0] ]
+bigEndian w = fromList [ w32Byte w i | i <- [0,8..31] ]
   where
     w32Byte :: Int -> Int -> Word8
     w32Byte w i = fromIntegral (toBE32 (fromIntegral w) `shiftR` i)
